@@ -6,6 +6,10 @@ from django.utils import timezone
 
 # para mi publicación
 # para considerarlo como Modelo usar (models.Model)
+""" title = models.CharField(max_length=200, blank=True, null=True)
+ blank -> admite en el formulario vacios al insertar
+ null -> indica que es nullable
+"""
 class Post(models.Model):
     STATUS = (
         ('draft', 'Draft'),
@@ -20,6 +24,7 @@ class Post(models.Model):
     updated = models.DateTimeField(auto_now=True)
     status = models.CharField(max_length=20, choices=STATUS, default='draft')
 
+    # el - es para indicar "descendente"
     class Meta:
         ordering = ('-publish', )
 
