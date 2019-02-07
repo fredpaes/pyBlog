@@ -14,7 +14,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
 
-from django.conf.urls import url
+from django.conf.urls import url, include
 from django.contrib import admin
 # from first.views import inicio
 # from first.views import autor
@@ -28,4 +28,5 @@ urlpatterns = [
     url('^$', autor),
     url(r'^admin/', admin.site.urls),
     url(r'^inicio$', inicio),
+    url(r'^miprimerapp/', include('app_one.urls')),
 ]

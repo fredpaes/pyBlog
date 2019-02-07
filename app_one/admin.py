@@ -11,4 +11,7 @@ class PostAdmin(admin.ModelAdmin):
     ordering = ['status', 'publish']
     prepopulated_fields = {'slug':('title',)}
 
+# cuando le especificas reglas a la UI
+# se crea una clase (arriba) y
+# se especifica dentro del llamado de registro (abajo)
 admin.site.register(Post, PostAdmin)
