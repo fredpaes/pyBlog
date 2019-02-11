@@ -1,10 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
     <h1>Hello World</h1>
+    <p>Saludando desde view en Django :D</p>
+    <p>Tenemos estos post: {{ posts }}</p>
+    <p>Segunda variable desde back: {{ dfg }}</p>
+    <hr>
+    <ul>
+        {% for p in subidos %}
+        <li>Título: {{ p.title }}</li>
+        {% endfor %}
+    </ul>
 </body>
 </html>
