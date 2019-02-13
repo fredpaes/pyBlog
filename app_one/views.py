@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from app_one.models import Post
+from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 
 # Create your views here.
 def home(request):
@@ -16,9 +17,25 @@ def post_list(request):
     return render(request, 'post/index.html',
                   {'subidos': subs})
 
-def post_list(request):
+'''def post_list(request):
     subs = Post.objects.filter(
-        status = 'draft'
+        status = 'published'
     )
+    return render(request, 'post/post_list.html',
+                  {'subidos': subs})'''
+
+def post_list(request):
+    object_list = Post.objects.filter(
+        status = 'published'
+    )
+    paginator = Paginator(object_list, 3)
+    page = request.GET.get('page')
+    try:
+        subs = paginator.page(page)
+    except PageNotAnInteger:
+        subs = paginator.page(1)
+    except EmptyPage:
+        subs = paginator.page(paginator.num_pages)
+
     return render(request, 'post/post_list.html',
                   {'subidos': subs})

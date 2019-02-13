@@ -3,11 +3,14 @@
 {% block title %} Post {% endblock %}
 
 {% block content %}
-
-<ul>
+<div class="container">
+<p class="teal-text">Saludando desde post_list</p>
+<div class="collection">
     {% for p in subidos %}
-    <li>Título: {{ p.title }}</li>
+    <a class="collection-item">Título: {{ p.title }}</a>
     {% endfor %}
-</ul>
+</div>
 
+{% include "post/paginator.html" with paginas=subidos %}
+</div>
 {% endblock %}

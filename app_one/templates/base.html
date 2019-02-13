@@ -1,14 +1,19 @@
+{% load staticfiles %}
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/materialize.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 </head>
 <body>
-    <h1>Hello World</h1>
+    <h1 class="orange-text center">Hello World</h1>
     <p>Saludando desde plantilla base</p>
     <hr>
     {% block content %}
     {% endblock %}
+    <script src="{% static 'js/materialize.js' %}"></script>
 </body>
 </html>
