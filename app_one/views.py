@@ -1,6 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from app_one.models import Post
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
+from .forms import PostForm
 
 # Create your views here.
 def home(request):
@@ -39,3 +40,18 @@ def post_list(request):
 
     return render(request, 'post/post_list.html',
                   {'subidos': subs})
+
+def new_post(request):
+    # para validar cuando se envia el form
+    if request.method == "POST":
+        form = PostForm(request.POST)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.author = request.user
+            post.save()
+            # redirect('post_list')
+    else:
+        form = PostForm
+
+    return render(request, 'post/new_post.html',
+                  {'form': form})
